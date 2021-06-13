@@ -12,6 +12,7 @@ export class MapComponent implements OnInit {
 
   apiLoaded: Observable<boolean>;
   zoom = 12;
+  center: google.maps.LatLngLiteral = {lat: 24, lng: 12};
 
   options: google.maps.MapOptions = {
     mapTypeId: 'hybrid',
@@ -28,7 +29,13 @@ export class MapComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      }
+    })
   }
 
 }

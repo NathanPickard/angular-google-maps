@@ -43,6 +43,7 @@ export class MapComponent implements OnInit {
   }
 
   addMarker(event: google.maps.MapMouseEvent) {
+    console.log(event);
     this.markerPositions.push(event.latLng.toJSON());
   }
 
